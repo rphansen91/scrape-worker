@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+}
+.bkgd {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0; z-index: -1;
+    background: linear-gradient(to bottom, #80ccff 0%, #1aa3ff, 60%, #006bb3 100%);
+}
+.container {
+    font-size: 28px;
+    position: relative;
+    text-align: center;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+#input {
+    font-size: 20px;
+    line-height: 2em;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    width: 300px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+#input::-webkit-input-placeholder {
+    color: #fff;
+}
+#button {
+    font-size: 20px;
+    line-height: 2em;
+    color: #fff;
+    min-width: 100px;
+    border: none;
+    outline: none;
+    padding: 0;
+    background-color: rgba(0,0,0,0.4);
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+#url {
+    font-size: 20px;
+    line-height: 2em;
+    background-color: rgba(255,255,255,0.4);
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    padding: 0 0.2em;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+}
+#images {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 1500px;
+    height: 1040px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em auto;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+#images .result {
+    position: absolute;
+    padding: 0.4em;
+    border-radius: 0.4em;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in;
+    color: rgba(255,255,255,0.8);
+}
+
+#images .result::after {
+    position: absolute;
+    content: '';
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 1px solid rgba(0,0,0,1);
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+}
+#images .result.big::after {background-color: #80ccff;}
+#images .result.wide::after {background-color: #1aa3ff;}
+#images .result.tall::after {background-color: #006bb3;}
+#images.grid .result::after {opacity: 1;}
+
+.result:hover {
+    z-index: 1;
+    transform: scale(1.2);
+}
+
+.result .resultImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.4em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 0.19em, 0.1em 0.1em 0.2em 0.2em rgba(0,0,0,0.2);
+}
+
+.credit {position: absolute; bottom: 0; color: #fff;}
+.credit a {
+    color: #fff;
+    text-decoration: none;
+}
+.credit:hover .creditU {text-decoration: underline;}
+
+main {
+	transition: .6s;
+}
+
+main.deemphasized {
+	-webkit-filter: blur(3px);
+	filter: blur(3px);
+}
+
+dialog {
+	position: fixed;
+	top: 30%; left: 50%;
+	z-index: 1;
+	width: 14em;
+	padding: 2em;
+	margin: -9em;
+	border: 1px solid silver;
+	border-radius: .5em;
+    background-color: rgba(255,255,255,0.9);
+	box-shadow: 0 .2em .5em rgba(0,0,0,.5),
+	            0 0 0 100vmax rgba(0,0,0,.2);
+}
+
+dialog:not([open]) {
+	display: none;
+}
+
+dialog h2 {
+    margin: 0;
+    margin-bottom: 0.4em;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+
+#custom {
+    font-size: 20px;
+    line-height: 2em;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid silver;
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+}
+
+dialog ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+dialog ul li{
+  display: block;
+  position: relative;
+  width: 100%;
+  border-bottom: 2px solid silver;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+dialog ul li input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+dialog ul li label{
+  display: block;
+  position: relative;
+  font-size: 20px;
+  padding: 0 0 0 1.4em;
+  line-height: 2em;
+  z-index: 9;
+  cursor: pointer;
+  transition: all 0.25s linear;
+  color: silver;
+}
+
+dialog ul li:hover label{
+	color: #333;
+}
+
+dialog ul li .check{
+  display: block;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; margin: auto;
+  border: 0.2em solid silver;
+  border-radius: 100%;
+  height: 1em;
+  width: 1em;
+  z-index: 5;
+  transition: border .25s linear;
+}
+
+dialog ul li:hover .check {
+  border: 0.2em solid #333;
+}
+
+dialog ul li .check::before {
+  display: block;
+  position: absolute;
+  content: '';
+  border-radius: 100%;
+  height: 0.6em;
+  width: 0.6em;
+  top: 0.2em;
+  left: 0.2em;
+  margin: auto;
+  transition: background 0.25s linear;
+}
+
+dialog input[type=radio]:checked ~ .check {
+  border: 0.2em solid #1aa3ff;
+}
+
+dialog input[type=radio]:checked ~ .check::before{
+  background: #1aa3ff;
+}
+
+dialog input[type=radio]:checked ~ label{
+  color: #1aa3ff;
+}
